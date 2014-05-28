@@ -1,0 +1,65 @@
+    <section>
+      <form role="form" action="" method="post">
+        <h1 class="col-md-12 text-center"><legend><strong>Registro</strong></legend></h1>
+        <fieldset class="col-md-9 col-md-offset-1">
+          <legend>
+          <h2>Ingrese sus datos: </h2>
+          </legend>
+          <ul class="col-md-4 col-md-offset-1">
+            <li>
+              <div class="form-group">
+                <label for="nombre">Nombres: </label>
+                <input class="form-control" type="text" id="nombre" name="nombre">
+              </div>
+            </li>
+            <li>
+              <div class="form-group">
+                <label for="apellido">Apellidos: </label>
+                <input class="form-control" type="text" id="apellido" name="apellido">
+              </div>
+            </li>
+            <li>
+              <div class="form-group">
+                <label for="email">Email: </label>
+                <input class="form-control" type="email" id="email"  name="email"/>
+              </div>
+            </li>
+            <li>
+              <div class="form-group">
+                <label for="pass">Clave: </label>
+                <input class="form-control" type="password" id="pass" name="pass" />
+              </div>
+            </li>
+          </ul>
+          <div class="form-group">
+            <input class="form-control btn btn-primary" type="submit" value="Ingresar">
+            <input class=" form-control btn btn-primary" type="reset" value="Borrar">
+          </div>
+        </fieldset>
+      </form>
+</section>
+
+
+
+url(r'^logout$', views.logout, name='logout'),
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
+def logout(request):
+    logout(request)
+    return render(request, 'logout.html')
+
+def validar(request):
+    username = request.POST['nombre']
+    password = request.POST['pass']
+    user = authenticate(username=username, password=password)
+    if user is not None:
+        if user.is_active:
+            login(request, user)
+            return render(request, 'autenticado.html')
+        else:
+            return render(request, 'inactivo.html')
+    else:
+        return render(request, 'error.html')
+
+
+  url(r'^validar$', views.validar, name='validar'),   

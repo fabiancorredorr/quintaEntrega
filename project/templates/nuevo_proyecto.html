@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Proyecto{% endblock %}
+{% block content %}
+<form action="https://translate.google.com/" method="post">
+  {% csrf_token %}
+  <label>Nom</label>
+  <input type="text" name="nombre">
+  <input type="submit" value="mandar">
+</form>
+{% endblock %}

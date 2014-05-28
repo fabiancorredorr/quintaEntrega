@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}
+Tarea finalizada
+{% endblock %}
+{% block content %}
+<h1>Tarea comenzada en: {{tiempo_inicio}}</h1>
+<h1>Tarea finalizada en: {{tiempo_fin}}</h1>
+<h1>Tiempo parcial de : {{ parcial }}</h1>
+<h1>A acumulado un tiempo de : {{ acumulado }}</h1>
+<A HREF="{% url 'project:detalle' proyecto_id %}"> Retornar </A>
+{% endblock %}

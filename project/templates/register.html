@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Create an account{% endblock %}
+
+{% block content %}
+  <form action="" method="post">
+      {% csrf_token %}
+      <fieldset class="col-md-9 col-md-offset-1">
+        <legend>
+          <h2>Agregar Tarea:</h2>
+        </legend>
+        <ul>
+          <li class="form-group">
+            {{ form.as_p }}    
+          </li>
+        </ul>
+        <input type="submit" value="Crear cuenta">
+      </fieldset>
+  </form>
+{% endblock %}

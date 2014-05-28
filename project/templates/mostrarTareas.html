@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Ver Proyecto: {{ proyecto.nombre_proyecto }}{% endblock %}
+
+{% block content %}
+	{% if proyecto_id %}
+		<form action="{% url 'project:nueva_tarea' proyecto_id %}" method="post">
+			{% csrf_token %}
+			<fieldset class="col-md-9 col-md-offset-1">
+            	  <legend>
+            	<h2>Agregar Tarea:</h2>
+          	</legend>
+          	<ul>
+	            <li class="form-group">
+    	          <label for="tarea">Nombre Tarea: </label>
+        	      <input class="form-control" type="text" id="tarea" name="nombreTarea" >
+            	</li>
+            	<li class="form-group">
+	              <label for="encargadotarea">Encargado Tarea: </label>
+    	          <input class="form-control" type="text" id="encargadotarea" name="encargadoTarea">
+        	    </li>
+	          </ul>
+	          <input class="form-control btn btn-primary" type="submit" value="Nuevo Tarea">
+    	      <input class="form-control btn btn-primary" type="reset" value="Borrar">
+        	</fieldset>
+		</form>
+	{% else %}
+		<p>No hay tareas proyectos.</p>
+	{% endif %}
+	
+	{% if lista_tareas %}
+    	<table  class="table table-hover table-striped">
+        	<th>Nombre Tarea</th>
+        	<th>Tiempo Inicio</th>
+            <th>Iniciar</th>
+        	<th>Tiempo Fin</th>
+            <th>Parar</th>
+        	<th>Proyecto_ID</th>
+            <th>Acumulado (Min.)</th>
+        	{% for tarea in lista_tareas %}
+            	<tr>
+	                <td>{{ tarea.nombre_tarea }}</td>
+    	            <td>{{ tarea.tiempo_Inicio }}</td>
+                    <td><A HREF="{% url 'project:inicio' tarea.id %}"> Iniciar >> </A></td>
+        	        <td>{{ tarea.tiempo_fin }}</td>
+                    <td><A HREF="{% url 'project:fin' tarea.id %}"> Parar << </A></td>
+        	        <td>{{ tarea.proyecto }}</td>
+                    <td>{{ tarea.acumulado_tarea }}</td>
+            	</tr>
+        	{%endfor%}
+    	</table>
+	{% else %}
+    	<p>No hay tareas disponibles.</p>
+	{% endif %}	  
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Proyecto{% endblock %}
+
+{% block content %}
+<div class="container">
+   
+	<section class="row">
+		<p><h3 class="col-md-2 col-md-offset-8">Hola, fabian</h3></p>
+		<img src="#">
+	</section>
+	<article>
+		<header class="col-md-8 col-md-offset-4">
+			<h1>¿Que quieres hacer?</h1>
+		</header>
+		<section class="row">
+			<section class="row col-md-4">
+			<a href="http://127.0.0.1:8000/project/crear_proyecto"><img src="/static/img/nuevo_proyecto.jpg" class=""></a>
+			<!--<img src="/static/img/nuevo_proyecto.jpg" class="">-->
+			<h3 class=" text-center">Nuevo Proyecto</h3>
+			</section>
+			<section class="col-md-4">
+				<a href="http://127.0.0.1:8000/project/mis_proyectos"><img src="/static/img/mis_proyectos.jpeg" class=""></a>
+				
+				<h3 class=" text-center">Mis proyectos</h3>
+			</section>
+			<section class="col-md-4">
+				<img src="/static/img/estadisticas.jpg">
+				<h3 class="text-center">Ver estadisticas</h3>
+			</section>
+		</section>
+	</article>
+
+
+    
+  </div>
+{% endblock %}

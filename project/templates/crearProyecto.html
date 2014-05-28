@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Proyecto{% endblock %}
+{% block content %}
+<div class="container">
+  <section >
+  	<form action="{% url 'project:nuevo_proyecto' %}" method="post">
+        {% csrf_token %}
+        <fieldset class="col-md-9 col-md-offset-1">
+          <legend>
+            <h2>Datos Generales:</h2>
+          </legend>
+          <ul>
+            <li class="form-group">
+              <label for="nombre">Nombre Proyecto: </label>
+              <input class="form-control" type="text" name="nombre" id="nombre" required>
+            </li>
+            <li class="form-group">
+              <label for="encargado">Encargado Proyecto: </label>
+              <input class="form-control" type="text" name="encargado" id="encargado" required>
+            </li>
+          </ul>
+          <input class="form-control btn btn-primary" type="submit" value="Nuevo Proyecto">
+          <input class="form-control btn btn-primary" type="reset" value="Borrar">
+        </fieldset>
+          
+    </form>
+</section>
+    
+  </div>  
+{% endblock %}
+
+

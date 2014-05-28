@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Mis Proyectos{% endblock %}
+
+{% block content %}
+{% if lista_proyectos %}
+    <table  class="table table-hover table-striped">
+        <th>Nombre Proyecto</th>
+        <th>Inicio de Proyecto</th>
+        <th>Fin de Proyecto</th>
+        <th>Total tiempo (Min.)</th>        
+        <th>Ver</th>
+        {% for proyecto in lista_proyectos %}
+            <tr>
+                <td>{{ proyecto.nombre_proyecto }}</td>
+                <td>{{ proyecto.tiempo_Inicio }}</td>
+                <td>{{ proyecto.tiempo_fin }}</td>
+                <td>{{ proyecto.acumulado_proyecto}}</td>
+                <td><A HREF="{% url 'project:detalle' proyecto.id %}"> -- VER {{proyecto.id}} -- </A></td>
+            </tr>
+        {%endfor%}
+    </table>
+    
+{% else %}
+    <p>No hay proyectos disponibles.</p>
+{% endif%}
+{% endblock %}
